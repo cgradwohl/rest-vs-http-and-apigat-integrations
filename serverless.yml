@@ -12,6 +12,13 @@ package:
 plugins:
   - serverless-webpack
 
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+    packager: npm
+    excludeFiles: src/**/*.test.js
+
 functions:
   worker:
     handler: src/worker.default
@@ -20,9 +27,11 @@ functions:
           path: /
           method: get
 
-custom:
-  webpack:
-    webpackConfig: webpack.config.js
-    includeModules: true
-    packager: npm
-    excludeFiles: src/**/*.test.js
+# resources:
+#   Resources:
+#     SuperSweetStream:
+#       Type: AWS::Kinesis::Stream
+#       Properties:
+#         Name: kdg-solution-1-stream
+#         RetentionPeriodHours: 24
+#         ShardCount: 3
