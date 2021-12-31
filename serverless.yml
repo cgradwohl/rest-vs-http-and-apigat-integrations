@@ -20,8 +20,8 @@ custom:
     excludeFiles: src/**/*.test.js
 
 functions:
-  worker:
-    handler: src/worker.default
+  handler:
+    handler: src/handler.default
     events:
       - http:
           path: /
