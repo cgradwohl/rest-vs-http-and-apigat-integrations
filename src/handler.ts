@@ -4,7 +4,7 @@ export default async (event: APIGatewayProxyEvent) => {
     statusCode: 200,
     body: JSON.stringify(
       {
-        input: event,
+        event,
         message: "hello creature ...",
       },
       null,
