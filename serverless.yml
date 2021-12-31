@@ -1,4 +1,4 @@
-service: serverless-typescript
+service: serverless-typescript-starter
 
 frameworkVersion: 2
 provider:
@@ -26,12 +26,3 @@ functions:
       - http:
           path: /
           method: get
-
-# resources:
-#   Resources:
-#     SuperSweetStream:
-#       Type: AWS::Kinesis::Stream
-#       Properties:
-#         Name: kdg-solution-1-stream
-#         RetentionPeriodHours: 24
-#         ShardCount: 3
