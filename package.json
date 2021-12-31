@@ -10,9 +10,6 @@
     "sls": "serverless --aws-profile personal",
     "typecheck": "tsc --noEmit"
   },
-  "engines": {
-    "node": ">=14.15.0"
-  },
   "dependencies": {},
   "devDependencies": {
     "@serverless/typescript": "^2.70.0",
