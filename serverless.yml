@@ -1,4 +1,21 @@
-service: "serverless-typescript-starter"
+# differences v1 vs v2: https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-vs-rest.html
+# V1 API GATEWAY REST API
+#   Integrations:
+#     1. lambda-proxy / aws-proxy / aws_proxy (Recommended): https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
+#     2. lambda / aws: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-custom-integrations.html
+#     3. http: https://docs.aws.amazon.com/apigateway/latest/developerguide/setup-http-integrations.html#set-up-http-custom-integrations
+#     4. http-proxy / http_proxy: https://docs.aws.amazon.com/apigateway/latest/developerguide/setup-http-integrations.html#api-gateway-set-up-http-proxy-integration-on-proxy-resource
+#     5. mock: https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-mock-integration.html
+#     6. private: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
+# V2 API GATEWAY HTTP API
+#   Integrations:
+#     1. Lambda proxy integrations for HTTP APIs: https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html
+#     2. HTTP proxy integrations for HTTP APIs: https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-http.html
+#     3. service integration support for HTTP APIs: SQS, Kinesis, StepFunctions
+
+# https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+# https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html
+service: "REST vs HTTP API Gateway Integrations"
 
 frameworkVersion: '2 || 3'
 
@@ -6,6 +23,8 @@ provider:
   name: aws
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
+  httpApi:
+    payload: '2.0'
 
 package:
   individually: true
@@ -24,6 +43,6 @@ functions:
   handler:
     handler: src/handler.default
     events:
-      - http:
+      - httpApi:
           path: /
           method: get
