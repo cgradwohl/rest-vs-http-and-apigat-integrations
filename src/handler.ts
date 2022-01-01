@@ -1,5 +1,6 @@
-import { APIGatewayProxyEvent } from "aws-lambda";
-export default async (event: APIGatewayProxyEvent) => {
+import { APIGatewayProxyHandlerV2 } from "aws-lambda";
+
+const handler: APIGatewayProxyHandlerV2 = async (event) => {
   return {
     statusCode: 200,
     body: JSON.stringify(
@@ -12,3 +13,5 @@ export default async (event: APIGatewayProxyEvent) => {
     ),
   };
 };
+
+export default handler;
